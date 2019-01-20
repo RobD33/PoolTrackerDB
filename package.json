@@ -1,0 +1,30 @@
+{
+  "name": "pooltrackerdb",
+  "version": "1.0.0",
+  "description": "PoolTracker Back End",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha spec/index.spec.js",
+    "start": "node listen.js",
+    "dev": "nodemon listen.js",
+    "seed": "node seed/seed.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobD33/PoolTrackerDB.git"
+  },
+  "author": "robD33",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobD33/PoolTrackerDB/issues"
+  },
+  "homepage": "https://github.com/RobD33/PoolTrackerDB#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.5",
+    "nodemon": "^1.18.9"
+  }
+}
