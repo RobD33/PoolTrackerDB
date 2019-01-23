@@ -1,0 +1,38 @@
+[
+    {
+        "username": "JamieH",
+        "screen_name": "JDog",
+        "email":"jdh@live.co.uk",
+        "password": "conman123"
+    },
+    {
+        "username": "RobD",
+        "screen_name": "Rob",
+        "email":"robd@gmail.com",
+        "password": "password123"
+    },
+    {
+        "username": "JonnyPowell",
+        "screen_name": "JP",
+        "email":"jpowell@yahoo.co.uk",
+        "password": "bushman01"
+    },
+    {
+        "username": "sbailey",
+        "screen_name": "Bails",
+        "email":"sb55@live.co.uk",
+        "password": "curryboi84"
+    },
+    {
+        "username": "beng",
+        "screen_name": "Goose",
+        "email":"goslingb@gmail.com",
+        "password": "brobrojr69"
+    },
+    {
+        "username": "jfranklin",
+        "screen_name": "Frankie",
+        "email":"skip@yahoo.co.uk",
+        "password": "Debbieharry00"
+    }
+]

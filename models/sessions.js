@@ -10,11 +10,6 @@ const SessionSchema = new Schema({
     created_at: {
         type: Date,
         default: Date.now
-    },
-    belongs_to: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'groups',
-        required: true
     }
 });
 
