@@ -8,15 +8,14 @@ const seedDB = require('../seed/seed');
 
 
 describe('/', () => {
-    let articles, comments, topics, users;
+    let groups, sessions, users;
   
     beforeEach(() => {
         return seedDB(data)
             .then(docs => {
-                comments = docs[0]
-                articles = docs[1]
+                groups = docs[0]
+                sessions = docs[1]
                 users = docs[2]
-                topics = docs[3]
             })
     });
     after(() => {
@@ -29,6 +28,23 @@ describe('/', () => {
             .expect(404)
             .then(res => {
                 expect(res.body).to.eql({ msg: 'Page not found' });
+        })
+    })
+
+    describe('POST /users', () => {
+        it('POST to api/users returns status 200 and the created users info', () => {
+            return request
+                .post('/api/users')
+                .send({
+                    username: 'BrettMills',
+                    email: 'brettmils@yahoo.com',
+                    password: 'dam4life',
+                    screen_name: 'Chap'
+                })
+                .expect(201)
+                .then(res => {
+                    expect(res.body.createdUser).to.have.keys('_id', 'username', 'email', 'password', 'screen_name', '__v', 'joined')
+                })
         })
     })
 })

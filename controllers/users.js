@@ -10,14 +10,15 @@ exports.getUsers = (req, res, next) => {
 
 exports.addUser = (req, res, next) => {
     const userData = req.body;
-    User.findOne({username: user.username})
+    User.findOne({username: userData.username})
         .then(foundUser => {
             if (foundUser !== null) return Promise.reject({ status: 400, msg: 'username already exists'})
             else {
                 const newUser = new User({
                     username: userData.username,
                     email: userData.email,
-                    password: userData.password
+                    password: userData.password,
+                    screen_name: userData.screen_name
                 })
                 return User.create(newUser)
             }
