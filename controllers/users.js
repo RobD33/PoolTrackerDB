@@ -27,3 +27,13 @@ exports.addUser = (req, res, next) => {
         })
         .catch(next)
 }
+
+exports.getUser = (req, res, next) => {
+    const {username} = req.params;
+    User.findOne( { username })
+        .then(foundUser => {
+            if (foundUser === null) return Promise.reject({ status: 400, msg: 'Username does not exist'})
+            else res.status(200).send({foundUser})
+        })
+        .catch(next)
+}
