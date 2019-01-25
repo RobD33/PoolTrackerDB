@@ -11,11 +11,6 @@ const GroupSchema = new Schema({
     ref: 'users',
     required: true
   },
-  sessions: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'sessions',
-    required: true
-  },
   created_at: {
     type: Date,
     default: Date.now

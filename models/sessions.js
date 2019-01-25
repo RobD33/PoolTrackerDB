@@ -10,7 +10,12 @@ const SessionSchema = new Schema({
     created_at: {
         type: Date,
         default: Date.now
+    },
+    belongs_to: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
+
 });
 
 module.exports = mongoose.model('sessions', SessionSchema);

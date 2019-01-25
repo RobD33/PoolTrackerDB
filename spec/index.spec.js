@@ -13,9 +13,9 @@ describe('/', () => {
     beforeEach(() => {
         return seedDB(data)
             .then(docs => {
-                groups = docs[0]
-                sessions = docs[1]
-                users = docs[2]
+                sessions = docs[0]
+                users = docs[1]
+                groups = docs[2]
             })
     });
     after(() => {
@@ -47,4 +47,17 @@ describe('/', () => {
                 })
         })
     })
+
+    describe('GET /sessions/:groupId', () => {
+        it('GET returns the sessions for the group', () => {
+            return request
+                .get(`/api/sessions/${groups[0]._id}`)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.sessions[0]).to.have.keys('_id', 'belongs_to', 'matches', 'created_at', '__v')
+                })
+        })
+    })
+    
+
 })

@@ -8,17 +8,17 @@ const seedDB = ({ userData, groupData, sessionData }) => {
     .then(userDocs => {
         const userRefObj = generateRefObj(userDocs)
         return Promise.all([
-            Session.insertMany(formatSessionData(sessionData, userRefObj)),
+            Group.insertMany(formatGroupData(groupData, userRefObj)),
             userDocs
         ])
     })
-    .then(([sessionDocs, userDocs]) => {
+    .then(([groupDocs, userDocs]) => {
         const userRefObj = generateRefObj(userDocs)
-        const sessionRefObj = generateRefObj(sessionDocs)
+        const groupRefObj = generateRefObj(groupDocs)
         return Promise.all ([
-            Group.insertMany(formatGroupData(groupData, userRefObj, sessionRefObj)),
+            Session.insertMany(formatSessionData(sessionData, userRefObj, groupRefObj)),
             userDocs,
-            sessionDocs
+            groupDocs
         ])
     })
 }
