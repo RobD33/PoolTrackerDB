@@ -48,6 +48,18 @@ describe('/', () => {
         })
     })
 
+    describe('GET /users/:username', () => {
+        it('GET returns the user with requested username', () => {
+            return request
+                .get(`/api/users/${users[0].username}`)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.user).to.have.keys('_id', 'username', 'screen_name', 'email', 'password', 'joined', '__v')
+                    expect(res.body.user.screen_name).to.equal('JDog')
+                })
+        })
+    })
+
     describe('GET /sessions/:groupId', () => {
         it('GET returns the sessions for the group', () => {
             return request

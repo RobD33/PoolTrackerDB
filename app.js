@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const apiRouter = require('./routes/api');
-const DB_URL = process.env.DB_URL || require('./config').DB_URL
+const { DB_URL } = process.env || require('./config').DB_config
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')

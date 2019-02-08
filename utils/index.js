@@ -1,3 +1,5 @@
+const { passwordKey } = process.env || require('../config')
+
 exports.generateRefObj = data => {
     const key = data[0].username ? 
         'username' : 'group_name'
@@ -29,4 +31,8 @@ exports.formatSessionData = (sessionData, userRefObj, groupRefObj)=> {
         session.belongs_to = groupRefObj[session.belongs_to]
         return session
     })
+}
+
+exports.passwordCheck = (encryptedPwd, foundPwd) => {
+    return foundPwd === encryptedPwd.split('').map(char => passwordKey[char]).join('')
 }

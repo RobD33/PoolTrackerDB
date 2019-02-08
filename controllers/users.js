@@ -1,4 +1,5 @@
 const {User} = require('../models');
+const {passwordCheck} = require('../utils')
 
 exports.getUsers = (req, res, next) => {
     User.find()
@@ -31,10 +32,19 @@ exports.addUser = (req, res, next) => {
 
 exports.getUser = (req, res, next) => {
     const {username} = req.params;
+    const {encyptedPwd} = req.body;
     User.findOne( { username })
         .then(foundUser => {
-            if (foundUser === null) return Promise.reject({ status: 400, msg: 'Username does not exist'})
-            else res.status(200).send({foundUser})
+            if (user === null) return Promise.reject({ status: 400, msg: 'Username does not exist'})
+            if (encryptedPwd !== undefined && passwordCheck(encyptedPwd, foundUser.password)) return Promise.reject({ status: 400, msg: 'Incorrect password'})
+            else {
+                const user = {
+                    username: foundUser.username,
+                    screen_name: foundUser.screen_name,
+                    joined: foundUser.joined
+                }
+                res.status(200).send({user})
+            }
         })
         .catch(next)
 }
